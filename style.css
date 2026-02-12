@@ -9,11 +9,22 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* TIP Manila Official Colors */
+    --tip-black: #000000;
+    --tip-gold: #F4C430;
+    --tip-dark-gold: #D4A017;
+    --tip-light-gold: #FFF8DC;
+    --tip-gray: #808080;
+    --tip-light-gray: #C0C0C0;
+    --tip-dark-gray: #404040;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
     line-height: 1.6;
-    color: #333;
+    color: #1a1a1a;
     padding: 20px;
 }
 
@@ -22,37 +33,43 @@ body {
     margin: 0 auto;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    border: 3px solid var(--tip-gold);
 }
 
 /* === HEADER === */
 .header {
-    background: linear-gradient(135deg, #F4C430 0%, #F4C430 100%);
+    background: linear-gradient(135deg, var(--tip-black) 0%, var(--tip-dark-gray) 100%);
     color: white;
     padding: 40px;
     text-align: center;
+    border-bottom: 5px solid var(--tip-gold);
 }
 
 .header h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin-bottom: 10px;
+    color: var(--tip-gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
     font-size: 1.1rem;
-    opacity: 0.9;
+    color: var(--tip-light-gray);
     margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
 .header h2 {
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 20px;
-    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid var(--tip-gold);
     padding-top: 20px;
+    color: white;
 }
 
 /* === FORM SECTIONS === */
@@ -61,28 +78,37 @@ form {
 }
 
 fieldset {
-    border: 2px solid #e2e8f0;
+    border: 3px solid var(--tip-light-gray);
     border-radius: 8px;
     padding: 30px;
     margin-bottom: 30px;
     background: #fafafa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+fieldset:hover {
+    border-color: var(--tip-gold);
+    box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.1);
 }
 
 legend {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #F4C430;
-    padding: 0 15px;
-    background: white;
+    color: var(--tip-black);
+    padding: 5px 15px;
+    background: var(--tip-gold);
     border-radius: 5px;
+    border: 2px solid var(--tip-black);
 }
 
 h3 {
     font-size: 1.2rem;
-    color: #4a5568;
+    color: var(--tip-black);
     margin: 25px 0 15px 0;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #808080;
+    padding: 10px 15px;
+    background: var(--tip-light-gray);
+    border-left: 5px solid var(--tip-gold);
+    border-radius: 3px;
 }
 
 /* === GRID LAYOUT SYSTEM === */
@@ -152,16 +178,16 @@ input[type="tel"]:focus,
 input[type="date"]:focus,
 input[type="number"]:focus,
 select:focus {
-    outline: 2px solid #007bff;
+    outline: 3px solid var(--tip-gold);
     outline-offset: 2px;
-    border-color: #007bff;
-    background: #f0f8ff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    border-color: var(--tip-black);
+    background: var(--tip-light-gold);
+    box-shadow: 0 0 0 4px rgba(244, 196, 48, 0.2);
 }
 
 input:hover,
 select:hover {
-    border-color: #667eea;
+    border-color: var(--tip-dark-gold);
 }
 
 /* === PLACEHOLDER === */
@@ -201,22 +227,23 @@ select {
 }
 
 .radio-group label:hover {
-    border-color: #F4C430;
-    background: #f7fafc;
+    border-color: var(--tip-gold);
+    background: var(--tip-light-gold);
 }
 
 .radio-group input[type="radio"] {
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    accent-color: #F4C430;
+    accent-color: var(--tip-gold);
     cursor: pointer;
 }
 
 .radio-group label:has(input[type="radio"]:checked) {
-    border-color: #F4C430;
-    background: #edf2f7;
+    border-color: var(--tip-black);
+    background: var(--tip-gold);
     font-weight: 600;
+    box-shadow: 0 2px 5px rgba(244, 196, 48, 0.3);
 }
 
 /* === SUBMIT BUTTON === */
@@ -224,27 +251,30 @@ select {
     text-align: center;
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 2px solid #e2e8f0;
+    border-top: 3px solid var(--tip-gold);
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #F4C430 0%, #F4C430 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--tip-black) 0%, var(--tip-dark-gray) 100%);
+    color: var(--tip-gold);
     font-size: 1.2rem;
     font-weight: 700;
-    padding: 15px 60px;
-    border: none;
+    padding: 18px 70px;
+    border: 3px solid var(--tip-gold);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    background: linear-gradient(135deg, var(--tip-gold) 0%, var(--tip-dark-gold) 100%);
+    color: var(--tip-black);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(244, 196, 48, 0.5);
+    border-color: var(--tip-black);
 }
 
 .submit-btn:active {
@@ -253,21 +283,41 @@ select {
 
 /* === FOOTER === */
 footer {
-    background: #2d3748;
-    color: white;
+    background: var(--tip-black);
+    color: var(--tip-gold);
     text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
+    padding: 25px;
+    font-size: 0.95rem;
+    border-top: 5px solid var(--tip-gold);
+    letter-spacing: 1px;
 }
 
 /* === VALIDATION STYLES === */
 input:invalid:not(:placeholder-shown),
 select:invalid:not(:placeholder-shown) {
     border-color: #e53e3e;
+    background: #fff5f5;
 }
 
 input:valid:not(:placeholder-shown) {
     border-color: #48bb78;
+}
+
+/* Show validation icon for required fields */
+input:required:valid:not(:placeholder-shown) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%2348bb78' d='M13.5 2L6 9.5 2.5 6 1 7.5l5 5 9-9z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+input:required:invalid:not(:placeholder-shown) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23e53e3e' d='M8 1l7 14H1L8 1zm0 3.5L3.5 13h9L8 4.5z'/%3E%3Cpath fill='%23e53e3e' d='M7.5 7h1v3h-1zm0 4h1v1h-1z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
 }
 
 /* === RESPONSIVE DESIGN === */
@@ -349,7 +399,7 @@ input:valid:not(:placeholder-shown) {
 
 /* === ACCESSIBILITY === */
 *:focus-visible {
-    outline: 2px solid #007bff;
+    outline: 3px solid var(--tip-gold);
     outline-offset: 2px;
 }
 
