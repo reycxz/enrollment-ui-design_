@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADEi University Digital Registrar - Student Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>ADEi UNIVERSITY</h1>
+            <p class="subtitle">Digital Registrar System</p>
+            <h2>Student Registration Form</h2>
+        </header>
+
+        <!-- Main Registration Form -->
+        <form id="registrationForm" action="#" method="POST">
+            
+            <!-- SECTION 1: Personal Information -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="middleName">Middle Name</label>
+                        <input type="text" id="middleName" name="middleName">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="suffix">Suffix</label>
+                        <select id="suffix" name="suffix">
+                            <option value="">None</option>
+                            <option value="Jr.">Jr.</option>
+                            <option value="Sr.">Sr.</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" onkeydown="return false" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">Gender <span class="required">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Non-binary">Non-binary</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nationality">Nationality <span class="required">*</span></label>
+                        <select id="nationality" name="nationality" required>
+                            <option value="">Select Nationality</option>
+                            <option value="Filipino" selected>Filipino</option>
+                            <option value="American">American</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="religion">Religion</label>
+                        <input type="text" id="religion" name="religion">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- SECTION 2: Contact Details -->
+            <fieldset>
+                <legend>Contact Details</legend>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="student@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number <span class="required">*</span></label>
+                        <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="+63 XXX XXX XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="landline">Landline</label>
+                        <input type="tel" id="landline" name="landline" placeholder="(02) XXXX XXXX">
+                    </div>
+                </div>
+
+                <h3>Complete Home Address</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="street">Street Address <span class="required">*</span></label>
+                        <input type="text" id="street" name="street" placeholder="House No., Street Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="barangay">Barangay <span class="required">*</span></label>
+                        <input type="text" id="barangay" name="barangay" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="province">Province <span class="required">*</span></label>
+                        <input type="text" id="province" name="province" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="zipCode">Zip Code <span class="required">*</span></label>
+                        <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{4}" placeholder="1234" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- SECTION 3: Academic History -->
+            <fieldset>
+                <legend>Academic History</legend>
+                
+                <h3>Grade School</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gsName">School Name <span class="required">*</span></label>
+                        <input type="text" id="gsName" name="gsName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gsYear">Year Graduated <span class="required">*</span></label>
+                        <input type="number" id="gsYear" name="gsYear" min="1900" max="2026" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gsAddress">School Address <span class="required">*</span></label>
+                        <input type="text" id="gsAddress" name="gsAddress" required>
+                    </div>
+                </div>
+
+                <h3>Junior High School</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="jhsName">School Name <span class="required">*</span></label>
+                        <input type="text" id="jhsName" name="jhsName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jhsYear">Year Graduated <span class="required">*</span></label>
+                        <input type="number" id="jhsYear" name="jhsYear" min="1900" max="2026" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jhsAddress">School Address <span class="required">*</span></label>
+                        <input type="text" id="jhsAddress" name="jhsAddress" required>
+                    </div>
+                </div>
+
+                <h3>Senior High School</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shsName">School Name <span class="required">*</span></label>
+                        <input type="text" id="shsName" name="shsName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="shsYear">Year Graduated <span class="required">*</span></label>
+                        <input type="number" id="shsYear" name="shsYear" min="1900" max="2026" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gradeAverage">Grade Average <span class="required">*</span></label>
+                        <input type="number" id="gradeAverage" name="gradeAverage" min="75" max="100" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="shsAddress">School Address <span class="required">*</span></label>
+                        <input type="text" id="shsAddress" name="shsAddress" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- SECTION 4: Enrollment Choices -->
+            <fieldset>
+                <legend>Enrollment Choices</legend>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="radio-label">Academic Level <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="level" value="Undergraduate" id="levelUndergrad" required>
+                                Undergraduate
+                            </label>
+                            <label>
+                                <input type="radio" name="level" value="Graduate" id="levelGraduate">
+                                Graduate
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="radio-label">Semester <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="semester" value="1st Semester" required>
+                                1st Semester
+                            </label>
+                            <label>
+                                <input type="radio" name="semester" value="2nd Semester">
+                                2nd Semester
+                            </label>
+                            <label>
+                                <input type="radio" name="semester" value="Summer">
+                                Summer
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="radio-label">Campus <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="campus" value="Manila" required>
+                                Manila
+                            </label>
+                            <label>
+                                <input type="radio" name="campus" value="Quezon City">
+                                Quezon City
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Undergraduate Programs -->
+                <div id="undergradSection" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="collegeDept">College Department <span class="required">*</span></label>
+                            <select id="collegeDept" name="collegeDept">
+                                <option value="">Select College Department</option>
+                                <option value="engineering">College of Engineering and Architecture</option>
+                                <option value="computer">College of Computer Studies</option>
+                                <option value="business">College of Business Education</option>
+                                <option value="arts">College of Arts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="degreeProgram">Degree Program <span class="required">*</span></label>
+                            <select id="degreeProgram" name="degreeProgram">
+                                <option value="">Select Degree Program</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="specializationSection" class="form-row" style="display: none;">
+                        <div class="form-group">
+                            <label for="specialization">Specialization <span class="required">*</span></label>
+                            <select id="specialization" name="specialization">
+                                <option value="">Select Specialization</option>
+                                <option value="Financial Management">Financial Management</option>
+                                <option value="Human Resource Management">Human Resource Management</option>
+                                <option value="Logistics and Supply Chain Management">Logistics and Supply Chain Management</option>
+                                <option value="Marketing Management">Marketing Management</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graduate Programs -->
+                <div id="gradSection" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="radio-label">Program Type <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="gradType" value="Doctorate" id="typeDoctorate">
+                                    Doctorate
+                                </label>
+                                <label>
+                                    <input type="radio" name="gradType" value="Masters" id="typeMasters">
+                                    Master's
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gradProgram">Graduate Program <span class="required">*</span></label>
+                            <select id="gradProgram" name="gradProgram">
+                                <option value="">Select Program</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Registration</button>
+            </div>
+        </form>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 ADEi University. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
