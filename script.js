@@ -334,32 +334,57 @@ if (gradeAverage) {
 // === PHONE NUMBER FORMATTING & VALIDATION ===
 const mobileNumber = document.getElementById('mobileNumber');
 if (mobileNumber) {
+    // Prevent non-numeric keystrokes (allow navigation & control keys)
+    mobileNumber.addEventListener('keydown', function(e) {
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'];
+        if (allowedKeys.includes(e.key)) return;
+        if (!/^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+
+    // Sanitize paste to only digits and apply formatting
+    mobileNumber.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const pasted = (e.clipboardData || window.clipboardData).getData('text') || '';
+        const digits = pasted.replace(/\D/g, '');
+        const current = this.value.replace(/\D/g, '');
+        let combined = (current + digits).replace(/^63/, '').replace(/^0/, '').substring(0, 10);
+        this.value = formatMobile(combined);
+        this.dispatchEvent(new Event('input'));
+    });
+
     mobileNumber.addEventListener('input', function(e) {
         // Remove all non-numeric characters
         let value = e.target.value.replace(/\D/g, '');
-        
+
         // Remove leading 63 or 0
         if (value.startsWith('63')) {
             value = value.substring(2);
         } else if (value.startsWith('0')) {
             value = value.substring(1);
         }
-        
+
         // Limit to 10 digits
         value = value.substring(0, 10);
-        
+
+        // If empty, clear value
+        if (value.length === 0) {
+            e.target.value = '';
+            return;
+        }
+
         // Format as +63 XXX XXX XXXX
-        if (value.length > 0) {
-            if (value.length <= 3) {
-                e.target.value = '+63 ' + value;
-            } else if (value.length <= 6) {
-                e.target.value = '+63 ' + value.substring(0, 3) + ' ' + value.substring(3);
-            } else {
-                e.target.value = '+63 ' + value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6, 10);
-            }
+        if (value.length <= 3) {
+            e.target.value = '+63 ' + value;
+        } else if (value.length <= 6) {
+            e.target.value = '+63 ' + value.substring(0, 3) + ' ' + value.substring(3);
+        } else {
+            e.target.value = '+63 ' + value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6, 10);
         }
     });
-    
+
     // Validate on blur
     mobileNumber.addEventListener('blur', function() {
         const digits = this.value.replace(/\D/g, '');
@@ -373,24 +398,64 @@ if (mobileNumber) {
 // Landline - numbers only with formatting
 const landline = document.getElementById('landline');
 if (landline) {
+    // Prevent non-numeric keystrokes (allow navigation & control keys)
+    landline.addEventListener('keydown', function(e) {
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'];
+        if (allowedKeys.includes(e.key)) return;
+        if (!/^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+
+    // Sanitize paste for landline
+    landline.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const pasted = (e.clipboardData || window.clipboardData).getData('text') || '';
+        const digits = pasted.replace(/\D/g, '').substring(0, 10);
+        this.value = formatLandline(digits);
+        this.dispatchEvent(new Event('input'));
+    });
+
     landline.addEventListener('input', function(e) {
         // Remove all non-numeric characters
         let value = e.target.value.replace(/\D/g, '');
-        
+
         // Limit to 10 digits
         value = value.substring(0, 10);
-        
+
+        // If empty, clear
+        if (value.length === 0) {
+            e.target.value = '';
+            return;
+        }
+
         // Format as (02) XXXX XXXX
-        if (value.length > 0) {
-            if (value.length <= 2) {
-                e.target.value = '(' + value;
-            } else if (value.length <= 6) {
-                e.target.value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
-            } else {
-                e.target.value = '(' + value.substring(0, 2) + ') ' + value.substring(2, 6) + ' ' + value.substring(6, 10);
-            }
+        if (value.length <= 2) {
+            e.target.value = '(' + value;
+        } else if (value.length <= 6) {
+            e.target.value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
+        } else {
+            e.target.value = '(' + value.substring(0, 2) + ') ' + value.substring(2, 6) + ' ' + value.substring(6, 10);
         }
     });
+}
+
+// Helpers
+function formatMobile(digits) {
+    digits = (digits || '').replace(/\D/g, '').substring(0, 10);
+    if (digits.length === 0) return '';
+    if (digits.length <= 3) return '+63 ' + digits;
+    if (digits.length <= 6) return '+63 ' + digits.substring(0, 3) + ' ' + digits.substring(3);
+    return '+63 ' + digits.substring(0, 3) + ' ' + digits.substring(3, 6) + ' ' + digits.substring(6, 10);
+}
+
+function formatLandline(digits) {
+    digits = (digits || '').replace(/\D/g, '').substring(0, 10);
+    if (digits.length === 0) return '';
+    if (digits.length <= 2) return '(' + digits;
+    if (digits.length <= 6) return '(' + digits.substring(0, 2) + ') ' + digits.substring(2);
+    return '(' + digits.substring(0, 2) + ') ' + digits.substring(2, 6) + ' ' + digits.substring(6, 10);
 }
 
 // === ZIP CODE VALIDATION - NUMBERS ONLY ===
